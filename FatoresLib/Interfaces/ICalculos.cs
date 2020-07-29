@@ -6,6 +6,6 @@ namespace FatoresLib.Interfaces
     {
         bool EhPrimo(int numero);
 
-        int RetornaFatores(int numero, List<int> fatores);
+        List<int> RetornaFatores(int numero, List<int> fatores);
     }
 }

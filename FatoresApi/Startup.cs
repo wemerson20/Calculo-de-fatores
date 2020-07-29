@@ -5,25 +5,20 @@ using System.Threading.Tasks;
 using System.Diagnostics.CodeAnalysis;
 using Otc.AspNetCore.ApiBoot;
 using Otc.Extensions.Configuration;
-
+using AutoMapper.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 
 namespace fatoresapi
 {
-    public class Startup : ApiBootStartup
+    public class Startup 
     {
-        protected override ApiMetadata ApiMetadata => new ApiMetadata()
-        {
-            Name = "Calculo Fatores",
-            Description = "{{webAPIDescription}}",
-            DefaultApiVersion = "1.0"
-        };
-
         public Startup(IConfiguration configuration)
-            : base(configuration)
         {
+            this.Configuration = configuration;
 
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,10 +30,7 @@ namespace fatoresapi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+ 
 
             app.UseHttpsRedirection();
 
